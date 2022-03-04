@@ -1,14 +1,23 @@
 package edu.berkeley.aep;
 
-public class Bester {
-    private final ScaledQuantity[] quantities;
+import java.util.Arrays;
+import java.util.List;
 
-    public Bester(ScaledQuantity... quantities) {
-        this.quantities = quantities;
+public class Bester {
+    private final List<Bestable> quantities;
+
+    public Bester(Bestable... quantities) {
+        this.quantities = Arrays.asList(quantities);
+        if (this.quantities.contains(null)) {
+            throw new NullPointerException("List should not contain null values");
+        }
+        if (this.quantities.isEmpty()) {
+            throw new ArrayIndexOutOfBoundsException("List should not be empty");
+        }
     }
 
-    public ScaledQuantity best() {
-        var champion = quantities[0];
+    public Bestable best() {
+        var champion = quantities.get(0);
         for (var challenger : quantities) {
             if (challenger.betterThan(champion)) {
                 champion = challenger;

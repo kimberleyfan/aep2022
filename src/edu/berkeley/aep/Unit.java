@@ -24,7 +24,7 @@ public enum Unit {
     }
 
     private enum UnitType {
-        VOLUME, LENGTH, TEMPERATURE;
+        VOLUME, LENGTH, TEMPERATURE
     }
 
     public int convertTo(Unit to, int amount) {
