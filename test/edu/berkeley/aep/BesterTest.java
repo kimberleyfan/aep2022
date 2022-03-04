@@ -14,6 +14,14 @@ public class BesterTest {
         assertEquals(oneOz, bester.best());
     }
 
+    @Test
+    public void bestOfHalfAndQuarterShouldBeHalf() {
+        var half = new Chance(0.5);
+        var quarter = new Chance(0.25);
+        var bester = new Bester(half, quarter);
+        assertEquals(half, bester.best());
+    }
+
     @Test(expected = NullPointerException.class)
     public void passingNullIntoBesterShouldFail() {
         var bester = new Bester(null, null);
