@@ -3,6 +3,7 @@ package edu.berkeley.aep;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class QuantityTest {
     @Test
@@ -78,5 +79,12 @@ public class QuantityTest {
         } catch (Exception e) {
             throw new RuntimeException("I couldn't do anything about this!", e);
         }
+    }
+
+    @Test
+    public void oneOzShouldBeBetterThanFourTeaspoons() {
+        var fourTsp = new ScaledQuantity(4, Unit.TSP);
+        var oneOz = new ScaledQuantity(1, Unit.OZ);
+        assertTrue(oneOz.betterThan(fourTsp));
     }
 }

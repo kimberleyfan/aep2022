@@ -25,4 +25,8 @@ public class ScaledQuantity {
     public String toString() {
         return amount + " " + unit;
     }
+
+    public boolean betterThan(ScaledQuantity other) {
+        return amount > other.convert(unit);
+    }
 }
